@@ -45,3 +45,6 @@ vendor/
 
 # Project specific binaries
 opengl_test
+
+# To-Do list
+to_do.txt

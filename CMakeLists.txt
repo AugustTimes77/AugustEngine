@@ -8,12 +8,21 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Find required packages
 find_package(OpenGL REQUIRED)
 find_package(glfw3 REQUIRED)
+find_package(GLEW REQUIRED)
 
 # Add executable
-add_executable(opengl_test main.cpp)
+add_executable(opengl_test 
+    ${CMAKE_SOURCE_DIR}/main.cpp 
+    ${CMAKE_SOURCE_DIR}/Utils.cpp
+)
+
+target_include_directories(opengl_test PRIVATE 
+    ${CMAKE_SOURCE_DIR}  # This is where your Utils.h is located
+)
 
 # Link libraries
 target_link_libraries(opengl_test
     OpenGL::GL
     glfw
+    GLEW::GLEW
 )

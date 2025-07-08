@@ -1,5 +1,4 @@
 #include <GL/glew.h>
-#include <GLFW/glfw3.h>
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -8,6 +7,9 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <stack>
+
+#include <SDL.h> // Add SDL2 header
+#include <SDL_opengl.h> // Add SDL2 OpenGL header
 
 #include "Utils.h"
 
@@ -71,8 +73,8 @@ void setupVertices(void) {
     glBufferData(GL_ARRAY_BUFFER, sizeof(pyramidPositions), pyramidPositions, GL_STATIC_DRAW);
 }
 
-void init(GLFWwindow* window) {
-    renderingProgram = Utils::createShaderProgram("../shaders/vertShader.glsl", "../shaders/fragShader.glsl");
+void init(SDL_Window* window, SDL_GLContext context) {
+    renderingProgram = Utils::createShaderProgram("./shaders/vertShader.glsl", "./shaders/fragShader.glsl");
     if (renderingProgram == 0) {
         std::cout << "Error creating shader program!" << std::endl;
         exit(EXIT_FAILURE);
@@ -85,7 +87,7 @@ void init(GLFWwindow* window) {
     glEnable(GL_DEPTH_TEST);
 }
 
-void display(GLFWwindow* window, double currentTime) {
+void display(SDL_Window* window, double currentTime) {
     GLenum err = glGetError();
 
     timeFactor = (float)currentTime;
@@ -98,7 +100,12 @@ void display(GLFWwindow* window, double currentTime) {
     mvLoc = glGetUniformLocation(renderingProgram, "v_matrix"); // gets the lcoation of the uniforms
     pLoc = glGetUniformLocation(renderingProgram, "p_matrix"); // in the shader program
 
-    glfwGetFramebufferSize(window, &width, &height);
+    // Use SDL_GL_GetDrawableSize for framebuffer size
+    int drawableWidth, drawableHeight;
+    SDL_GL_GetDrawableSize(window, &drawableWidth, &drawableHeight);
+    width = drawableWidth; // Update global width
+    height = drawableHeight; // Update global height
+
     aspect = (float)width / (float)height;
     pMat = glm::perspective(1.4472f, aspect, 0.1f, 1000.0f);
 
@@ -155,54 +162,98 @@ void display(GLFWwindow* window, double currentTime) {
 
     // remove moon scale/rotation/position, planet position, sun position, and view matrices from stack
     mvStack.pop(); mvStack.pop(); mvStack.pop(); mvStack.pop();
-
-
-/*     // draw the cube (use buffer #0)
-    mMat = glm::translate(glm::mat4(1.0f), glm::vec3(cubeLocX, cubeLocY, cubeLocZ));
-    mvMat = vMat * mMat;
-    glUniformMatrix4fv(mvLoc, 1, GL_FALSE, glm::value_ptr(mvMat)); // sends the matrix data to the
-    glUniformMatrix4fv(pLoc, 1, GL_FALSE, glm::value_ptr(pMat)); // variable in the vertex shader
-    glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
-    glEnableVertexAttribArray(0);
-    glEnable(GL_DEPTH_TEST);
-    glDepthFunc(GL_LEQUAL);
-    glDrawArrays(GL_TRIANGLES, 0, 36);
-    // draw the pyramid (use buffer #1)
-    mMat = glm::translate(glm::mat4(1.0f), glm::vec3(pyrLocX, pyrLocY, pyrLocZ));
-    mvMat = vMat * mMat;
-    glUniformMatrix4fv(mvLoc, 1, GL_FALSE, glm::value_ptr(mvMat));
-    glUniformMatrix4fv(pLoc, 1, GL_FALSE, glm::value_ptr(pMat));
-    glBindBuffer(GL_ARRAY_BUFFER, vbo[1]);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
-    glEnableVertexAttribArray(0);
-    glEnable(GL_DEPTH_TEST);   
-    glDepthFunc(GL_LEQUAL);
-    glDrawArraysInstanced(GL_TRIANGLES, 0, 18, 6); */
 }
 
-int main(void) {
-    if (!glfwInit()) {exit(EXIT_FAILURE);}
-    
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-     
-    GLFWwindow* window = glfwCreateWindow(600, 600, "Chapter2 - program1", NULL, NULL);
-    glfwMakeContextCurrent(window);
-    
-    if (glewInit() != GLEW_OK) { exit(EXIT_FAILURE); }
-    
-    glfwSwapInterval(1);
-    
-    init(window);
+// Function prototypes for SDL2
+void init(SDL_Window* window, SDL_GLContext context);
+void display(SDL_Window* window, double currentTime);
 
-    while (!glfwWindowShouldClose(window)) {
-        display(window, glfwGetTime());
-        glfwSwapBuffers(window);
-        glfwPollEvents();
+int main(int argc, char* argv[]) {
+    // Explicitly set SDL to use the X11 video driver
+    // SDL_SetHint(SDL_HINT_VIDEODRIVER, "x11");
+
+    // Initialize SDL
+    if (SDL_Init(SDL_INIT_VIDEO) != 0) {
+        std::cerr << "Failed to initialize SDL: " << SDL_GetError() << "\n";
+        exit(EXIT_FAILURE);
     }
 
-    glfwDestroyWindow(window);
-    glfwTerminate();
+    // Set OpenGL attributes
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+    SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
+
+    // Create SDL Window
+    SDL_Window* window = SDL_CreateWindow(
+        "Chapter2 - program1",
+        SDL_WINDOWPOS_CENTERED,
+        SDL_WINDOWPOS_CENTERED,
+        600,
+        600,
+        SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE
+    );
+    if (!window) {
+        std::cerr << "Failed to create SDL window: " << SDL_GetError() << "\n";
+        SDL_Quit();
+        exit(EXIT_FAILURE);
+    }
+
+    // Create OpenGL context
+    SDL_GLContext context = SDL_GL_CreateContext(window);
+    if (!context) {
+        std::cerr << "Failed to create OpenGL context: " << SDL_GetError() << "\n";
+        SDL_DestroyWindow(window);
+        SDL_Quit();
+        exit(EXIT_FAILURE);
+    }
+
+    // Initialize GLEW
+    glewExperimental = GL_TRUE;
+    GLenum glewError = glewInit();
+    if (glewError != GLEW_OK) {
+        std::cerr << "Failed to initialize GLEW: " << glewGetErrorString(glewError) << "\n";
+        SDL_GL_DeleteContext(context);
+        SDL_DestroyWindow(window);
+        SDL_Quit();
+        exit(EXIT_FAILURE);
+    }
+
+    // Set swap interval
+    SDL_GL_SetSwapInterval(1);
+
+    init(window, context); // Pass window and context to init
+
+    // Main loop
+    SDL_Event event;
+    bool quit = false;
+    Uint64 lastTime = SDL_GetPerformanceCounter();
+
+    while (!quit) {
+        while (SDL_PollEvent(&event)) {
+            if (event.type == SDL_QUIT) {
+                quit = true;
+            }
+            // Handle window resize if needed
+            if (event.type == SDL_WINDOWEVENT && event.window.event == SDL_WINDOWEVENT_RESIZED) {
+                SDL_GetWindowSize(window, &width, &height);
+                glViewport(0, 0, width, height);
+            }
+        }
+
+        Uint64 currentTime = SDL_GetPerformanceCounter();
+        double deltaTime = (double)(currentTime - lastTime) / (double)SDL_GetPerformanceFrequency();
+        lastTime = currentTime;
+
+        display(window, SDL_GetTicks() / 1000.0); // Pass current time in seconds
+        SDL_GL_SwapWindow(window);
+    }
+
+    // Cleanup
+    SDL_GL_DeleteContext(context);
+    SDL_DestroyWindow(window);
+    SDL_Quit();
+
     exit(EXIT_SUCCESS);
 }

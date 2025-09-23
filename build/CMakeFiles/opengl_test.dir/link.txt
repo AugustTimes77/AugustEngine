@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/opengl_test.dir/link.d CMakeFiles/opengl_test.dir/main.cpp.o CMakeFiles/opengl_test.dir/Utils.cpp.o -o opengl_test  /usr/lib64/libGL.so /usr/lib64/libGLEW.so /usr/lib64/libSDL2-2.0.so.0.3200.56 /usr/local/lib/libsoil2.a /usr/lib64/libGL.so

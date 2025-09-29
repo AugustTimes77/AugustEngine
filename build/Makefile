@@ -117,65 +117,113 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named test
+# Target rules for targets named AugustEngine
 
 # Build rule for target.
-test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test
-.PHONY : test
+AugustEngine: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 AugustEngine
+.PHONY : AugustEngine
 
 # fast build rule for target.
-test/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/build
-.PHONY : test/fast
+AugustEngine/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AugustEngine.dir/build.make CMakeFiles/AugustEngine.dir/build
+.PHONY : AugustEngine/fast
 
-Utils.o: Utils.cpp.o
-.PHONY : Utils.o
-
-# target to build an object file
-Utils.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/Utils.cpp.o
-.PHONY : Utils.cpp.o
-
-Utils.i: Utils.cpp.i
-.PHONY : Utils.i
-
-# target to preprocess a source file
-Utils.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/Utils.cpp.i
-.PHONY : Utils.cpp.i
-
-Utils.s: Utils.cpp.s
-.PHONY : Utils.s
-
-# target to generate assembly for a file
-Utils.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/Utils.cpp.s
-.PHONY : Utils.cpp.s
-
-main.o: main.cpp.o
-.PHONY : main.o
+src/Utils.o: src/Utils.cpp.o
+.PHONY : src/Utils.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/main.cpp.o
-.PHONY : main.cpp.o
+src/Utils.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AugustEngine.dir/build.make CMakeFiles/AugustEngine.dir/src/Utils.cpp.o
+.PHONY : src/Utils.cpp.o
 
-main.i: main.cpp.i
-.PHONY : main.i
+src/Utils.i: src/Utils.cpp.i
+.PHONY : src/Utils.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/main.cpp.i
-.PHONY : main.cpp.i
+src/Utils.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AugustEngine.dir/build.make CMakeFiles/AugustEngine.dir/src/Utils.cpp.i
+.PHONY : src/Utils.cpp.i
 
-main.s: main.cpp.s
-.PHONY : main.s
+src/Utils.s: src/Utils.cpp.s
+.PHONY : src/Utils.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/main.cpp.s
-.PHONY : main.cpp.s
+src/Utils.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AugustEngine.dir/build.make CMakeFiles/AugustEngine.dir/src/Utils.cpp.s
+.PHONY : src/Utils.cpp.s
+
+src/main.o: src/main.cpp.o
+.PHONY : src/main.o
+
+# target to build an object file
+src/main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AugustEngine.dir/build.make CMakeFiles/AugustEngine.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
+
+src/main.i: src/main.cpp.i
+.PHONY : src/main.i
+
+# target to preprocess a source file
+src/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AugustEngine.dir/build.make CMakeFiles/AugustEngine.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
+
+src/main.s: src/main.cpp.s
+.PHONY : src/main.s
+
+# target to generate assembly for a file
+src/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AugustEngine.dir/build.make CMakeFiles/AugustEngine.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
+
+src/math/Mat4.o: src/math/Mat4.cpp.o
+.PHONY : src/math/Mat4.o
+
+# target to build an object file
+src/math/Mat4.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AugustEngine.dir/build.make CMakeFiles/AugustEngine.dir/src/math/Mat4.cpp.o
+.PHONY : src/math/Mat4.cpp.o
+
+src/math/Mat4.i: src/math/Mat4.cpp.i
+.PHONY : src/math/Mat4.i
+
+# target to preprocess a source file
+src/math/Mat4.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AugustEngine.dir/build.make CMakeFiles/AugustEngine.dir/src/math/Mat4.cpp.i
+.PHONY : src/math/Mat4.cpp.i
+
+src/math/Mat4.s: src/math/Mat4.cpp.s
+.PHONY : src/math/Mat4.s
+
+# target to generate assembly for a file
+src/math/Mat4.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AugustEngine.dir/build.make CMakeFiles/AugustEngine.dir/src/math/Mat4.cpp.s
+.PHONY : src/math/Mat4.cpp.s
+
+src/math/Vec3.o: src/math/Vec3.cpp.o
+.PHONY : src/math/Vec3.o
+
+# target to build an object file
+src/math/Vec3.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AugustEngine.dir/build.make CMakeFiles/AugustEngine.dir/src/math/Vec3.cpp.o
+.PHONY : src/math/Vec3.cpp.o
+
+src/math/Vec3.i: src/math/Vec3.cpp.i
+.PHONY : src/math/Vec3.i
+
+# target to preprocess a source file
+src/math/Vec3.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AugustEngine.dir/build.make CMakeFiles/AugustEngine.dir/src/math/Vec3.cpp.i
+.PHONY : src/math/Vec3.cpp.i
+
+src/math/Vec3.s: src/math/Vec3.cpp.s
+.PHONY : src/math/Vec3.s
+
+# target to generate assembly for a file
+src/math/Vec3.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AugustEngine.dir/build.make CMakeFiles/AugustEngine.dir/src/math/Vec3.cpp.s
+.PHONY : src/math/Vec3.cpp.s
 
 # Help Target
 help:
@@ -185,13 +233,19 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... test"
-	@echo "... Utils.o"
-	@echo "... Utils.i"
-	@echo "... Utils.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... AugustEngine"
+	@echo "... src/Utils.o"
+	@echo "... src/Utils.i"
+	@echo "... src/Utils.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
+	@echo "... src/math/Mat4.o"
+	@echo "... src/math/Mat4.i"
+	@echo "... src/math/Mat4.s"
+	@echo "... src/math/Vec3.o"
+	@echo "... src/math/Vec3.i"
+	@echo "... src/math/Vec3.s"
 .PHONY : help
 
 

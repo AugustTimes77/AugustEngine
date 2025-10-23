@@ -18,6 +18,7 @@ add_executable(AugustEngine
     src/Utils.cpp
     src/math/Vec3.cpp
     src/math/Mat4.cpp
+    src/Camera.cpp
 )
 
 target_include_directories(AugustEngine PRIVATE

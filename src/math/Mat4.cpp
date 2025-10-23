@@ -98,6 +98,36 @@ namespace AugustEngine {
         return result;
     }
 
+    static Mat4 Mat::lookAt(const Vec3& eye, const Vec3& ceter, const Vec3& up){
+        Vec3 f = (center - eye).normalize();    // forward direction
+        Vec3 s = f.cross(up).normalize();       // side (right) direction
+        Vec3 u = s.cross(f);                    // up direction (re-orthogonalized)
+
+        Mat4 result(1.0f); // start with identity matrix
+
+        // First column (right vector)
+        result.elements[0 + 0 * 4] = s.x;
+        result.elements[1 + 0 * 4] = s.y;
+        result.elements[2 + 0 * 4] = s.z;
+
+        // Second column (up vector)
+        result.elements[0 + 1 * 4] = u.x;
+        result.elements[1 + 1 * 4] = u.y;
+        result.elements[2 + 1 * 4] = u.z;
+
+        // Third column (forward vector - inverted for right-handed coordinate system)
+        result.elements[0 + 2 * 4] = -f.x;
+        result.elements[1 + 2 * 4] = -f.y;
+        result.elements[2 + 2 * 4] = -f.z;
+
+        // Translation part (camera position)
+        result.elements[0 + 3 * 4] = -s.dot(eye);
+        result.elements[1 + 3 * 4] = -u.dot(eye);
+        result.elements[2 + 3 * 4] = f.dot(eye); // Note: f.dot(eye) because f is inverted
+
+        return result;
+    }
+
     Mat4 Mat4::perspective(float fov, float aspectRatio, float near, float far) {
         Mat4 result(1.0f);
         float q = 1.0f / tan(toRadians(0.5f * fov));

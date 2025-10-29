@@ -129,6 +129,30 @@ AugustEngine/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/AugustEngine.dir/build.make CMakeFiles/AugustEngine.dir/build
 .PHONY : AugustEngine/fast
 
+src/Camera.o: src/Camera.cpp.o
+.PHONY : src/Camera.o
+
+# target to build an object file
+src/Camera.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AugustEngine.dir/build.make CMakeFiles/AugustEngine.dir/src/Camera.cpp.o
+.PHONY : src/Camera.cpp.o
+
+src/Camera.i: src/Camera.cpp.i
+.PHONY : src/Camera.i
+
+# target to preprocess a source file
+src/Camera.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AugustEngine.dir/build.make CMakeFiles/AugustEngine.dir/src/Camera.cpp.i
+.PHONY : src/Camera.cpp.i
+
+src/Camera.s: src/Camera.cpp.s
+.PHONY : src/Camera.s
+
+# target to generate assembly for a file
+src/Camera.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AugustEngine.dir/build.make CMakeFiles/AugustEngine.dir/src/Camera.cpp.s
+.PHONY : src/Camera.cpp.s
+
 src/Utils.o: src/Utils.cpp.o
 .PHONY : src/Utils.o
 
@@ -234,6 +258,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... AugustEngine"
+	@echo "... src/Camera.o"
+	@echo "... src/Camera.i"
+	@echo "... src/Camera.s"
 	@echo "... src/Utils.o"
 	@echo "... src/Utils.i"
 	@echo "... src/Utils.s"

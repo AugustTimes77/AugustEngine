@@ -85,12 +85,12 @@ clean: CMakeFiles/AugustEngine.dir/clean
 CMakeFiles/AugustEngine.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/AugustEngine.dir/build.make CMakeFiles/AugustEngine.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/AugustEngine.dir/build.make CMakeFiles/AugustEngine.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/henry/Documents/dev/AugustEngine/build/CMakeFiles --progress-num=1,2,3,4,5 "Built target AugustEngine"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/henry/Documents/dev/AugustEngine/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target AugustEngine"
 .PHONY : CMakeFiles/AugustEngine.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/AugustEngine.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/henry/Documents/dev/AugustEngine/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/henry/Documents/dev/AugustEngine/build/CMakeFiles 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/AugustEngine.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/henry/Documents/dev/AugustEngine/build/CMakeFiles 0
 .PHONY : CMakeFiles/AugustEngine.dir/rule
@@ -102,7 +102,7 @@ AugustEngine: CMakeFiles/AugustEngine.dir/rule
 # codegen rule for target.
 CMakeFiles/AugustEngine.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/AugustEngine.dir/build.make CMakeFiles/AugustEngine.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/henry/Documents/dev/AugustEngine/build/CMakeFiles --progress-num=1,2,3,4,5 "Finished codegen for target AugustEngine"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/henry/Documents/dev/AugustEngine/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Finished codegen for target AugustEngine"
 .PHONY : CMakeFiles/AugustEngine.dir/codegen
 
 # clean rule for target.

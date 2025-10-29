@@ -2,6 +2,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/AugustEngine.dir/link.d"
   "AugustEngine"
   "AugustEngine.pdb"
+  "CMakeFiles/AugustEngine.dir/src/Camera.cpp.o"
+  "CMakeFiles/AugustEngine.dir/src/Camera.cpp.o.d"
   "CMakeFiles/AugustEngine.dir/src/Utils.cpp.o"
   "CMakeFiles/AugustEngine.dir/src/Utils.cpp.o.d"
   "CMakeFiles/AugustEngine.dir/src/main.cpp.o"

@@ -128,12 +128,27 @@ CMakeFiles/AugustEngine.dir/src/math/Mat4.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/AugustEngine.dir/src/math/Mat4.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/henry/Documents/dev/AugustEngine/src/math/Mat4.cpp -o CMakeFiles/AugustEngine.dir/src/math/Mat4.cpp.s
 
+CMakeFiles/AugustEngine.dir/src/Camera.cpp.o: CMakeFiles/AugustEngine.dir/flags.make
+CMakeFiles/AugustEngine.dir/src/Camera.cpp.o: /home/henry/Documents/dev/AugustEngine/src/Camera.cpp
+CMakeFiles/AugustEngine.dir/src/Camera.cpp.o: CMakeFiles/AugustEngine.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/henry/Documents/dev/AugustEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/AugustEngine.dir/src/Camera.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/AugustEngine.dir/src/Camera.cpp.o -MF CMakeFiles/AugustEngine.dir/src/Camera.cpp.o.d -o CMakeFiles/AugustEngine.dir/src/Camera.cpp.o -c /home/henry/Documents/dev/AugustEngine/src/Camera.cpp
+
+CMakeFiles/AugustEngine.dir/src/Camera.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/AugustEngine.dir/src/Camera.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/henry/Documents/dev/AugustEngine/src/Camera.cpp > CMakeFiles/AugustEngine.dir/src/Camera.cpp.i
+
+CMakeFiles/AugustEngine.dir/src/Camera.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/AugustEngine.dir/src/Camera.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/henry/Documents/dev/AugustEngine/src/Camera.cpp -o CMakeFiles/AugustEngine.dir/src/Camera.cpp.s
+
 # Object files for target AugustEngine
 AugustEngine_OBJECTS = \
 "CMakeFiles/AugustEngine.dir/src/main.cpp.o" \
 "CMakeFiles/AugustEngine.dir/src/Utils.cpp.o" \
 "CMakeFiles/AugustEngine.dir/src/math/Vec3.cpp.o" \
-"CMakeFiles/AugustEngine.dir/src/math/Mat4.cpp.o"
+"CMakeFiles/AugustEngine.dir/src/math/Mat4.cpp.o" \
+"CMakeFiles/AugustEngine.dir/src/Camera.cpp.o"
 
 # External object files for target AugustEngine
 AugustEngine_EXTERNAL_OBJECTS =
@@ -142,6 +157,7 @@ AugustEngine: CMakeFiles/AugustEngine.dir/src/main.cpp.o
 AugustEngine: CMakeFiles/AugustEngine.dir/src/Utils.cpp.o
 AugustEngine: CMakeFiles/AugustEngine.dir/src/math/Vec3.cpp.o
 AugustEngine: CMakeFiles/AugustEngine.dir/src/math/Mat4.cpp.o
+AugustEngine: CMakeFiles/AugustEngine.dir/src/Camera.cpp.o
 AugustEngine: CMakeFiles/AugustEngine.dir/build.make
 AugustEngine: CMakeFiles/AugustEngine.dir/compiler_depend.ts
 AugustEngine: /usr/lib64/libGL.so
@@ -150,7 +166,7 @@ AugustEngine: /usr/lib64/libSDL2-2.0.so.0.3200.56
 AugustEngine: /usr/local/lib/libsoil2.a
 AugustEngine: /usr/lib64/libGL.so
 AugustEngine: CMakeFiles/AugustEngine.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/henry/Documents/dev/AugustEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable AugustEngine"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/henry/Documents/dev/AugustEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable AugustEngine"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/AugustEngine.dir/link.txt --verbose=$(VERBOSE)
 	/usr/bin/cmake -E copy_directory /home/henry/Documents/dev/AugustEngine/assets /home/henry/Documents/dev/AugustEngine/build/assets
 

@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/henry/Documents/dev/AugustEngine/src/Camera.cpp" "CMakeFiles/AugustEngine.dir/src/Camera.cpp.o" "gcc" "CMakeFiles/AugustEngine.dir/src/Camera.cpp.o.d"
   "/home/henry/Documents/dev/AugustEngine/src/Utils.cpp" "CMakeFiles/AugustEngine.dir/src/Utils.cpp.o" "gcc" "CMakeFiles/AugustEngine.dir/src/Utils.cpp.o.d"
   "/home/henry/Documents/dev/AugustEngine/src/main.cpp" "CMakeFiles/AugustEngine.dir/src/main.cpp.o" "gcc" "CMakeFiles/AugustEngine.dir/src/main.cpp.o.d"
   "/home/henry/Documents/dev/AugustEngine/src/math/Mat4.cpp" "CMakeFiles/AugustEngine.dir/src/math/Mat4.cpp.o" "gcc" "CMakeFiles/AugustEngine.dir/src/math/Mat4.cpp.o.d"

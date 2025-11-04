@@ -1,4 +1,5 @@
 #include "AugustEngine/Camera.h"
+#include "AugustEngine/Utils.h"
 #include <cmath>
 
 namespace AugustEngine {
@@ -27,12 +28,21 @@ namespace AugustEngine {
         this->pitch = pitch;
         updateCameraVectors(); // Calculate front, right, up vectors
     }
+
+    Mat4 Camera::getViewMatrix() const {
+        return Mat4::lookAt(position, position + front, up);
+    }
+
+    Mat4 Camera::getProjectionMatrix(float aspectRatio) const{
+        return Mat4::perspective(zoom, aspectRatio, 0.1f, 100.0f);
+    }
+
     void Camera::updateCameraVectors() {
         // calculate the new front vector
         Vec3 newFront;
-        newFront.x = cos(toRadians(yaw)) * cos(toRadians(pitch));
-        newFront.y = sin(toRadians(pitch));
-        newFront.z = sin(toRadians(yaw)) * cos(toRadians(pitch));
+        newFront.x = cos(Utils::toRadians(yaw)) * cos(Utils::toRadians(pitch));
+        newFront.y = sin(Utils::toRadians(pitch));
+        newFront.z = sin(Utils::toRadians(yaw)) * cos(Utils::toRadians(pitch));
         front = newFront.normalize();
 
         // also re-calc the Right and Up vector
@@ -40,8 +50,5 @@ namespace AugustEngine {
         // this results in slower movement
         right = front.cross(worldUp).normalize();
         up = right.cross(front).normalize();
-    }
-    inline float toRadians(float degrees) {
-        return degrees * (3.1415926735 / 180.0f);
     }
 }

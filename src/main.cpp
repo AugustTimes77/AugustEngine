@@ -2,6 +2,8 @@
 #include <SDL2/SDL.h>
 #include <GL/glew.h>
 #include "AugustEngine/Utils.h"
+#include "AugustEngine/Camera.h" // Include Camera header
+#include "AugustEngine/math/Vec3.h" // Include Vec3 for camera position
 
 // Window dimensions
 const int WINDOW_WIDTH = 800;
@@ -76,6 +78,11 @@ int main(int argc, char* argv[]) {
         return -1;
     }
 
+    // Get uniform locations
+    GLint modelLoc = glGetUniformLocation(shaderProgram, "model");
+    GLint viewLoc = glGetUniformLocation(shaderProgram, "view");
+    GLint projLoc = glGetUniformLocation(shaderProgram, "projection");
+
     // Create vertex array object (VAO)
     GLuint VAO;
     glGenVertexArrays(1, &VAO);
@@ -104,6 +111,9 @@ int main(int argc, char* argv[]) {
     bool running = true;
     SDL_Event event;
 
+    // Instantiate camera
+    AugustEngine::Camera camera(AugustEngine::Vec3(0.0f, 0.0f, 3.0f)); // Camera at (0,0,3) looking towards origin
+
     while (running) {
         // Handle events
         while (SDL_PollEvent(&event)) {
@@ -123,6 +133,20 @@ int main(int argc, char* argv[]) {
 
         // Use shader program
         glUseProgram(shaderProgram);
+
+        // Calculate matrices
+        AugustEngine::Mat4 model = AugustEngine::Mat4::identity(); // Identity for now
+        // Move the triangle slightly back so the camera at (0,0,3) can see it
+        model = AugustEngine::Mat4::translation(AugustEngine::Vec3(0.0f, 0.0f, -1.0f));
+
+        float aspectRatio = (float)WINDOW_WIDTH / (float)WINDOW_HEIGHT;
+        AugustEngine::Mat4 view = camera.getViewMatrix();
+        AugustEngine::Mat4 projection = camera.getProjectionMatrix(aspectRatio);
+
+        // Pass matrices to shaders
+        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, model.elements);
+        glUniformMatrix4fv(viewLoc, 1, GL_FALSE, view.elements);
+        glUniformMatrix4fv(projLoc, 1, GL_FALSE, projection.elements);
 
         // Bind VAO and draw triangle
         glBindVertexArray(VAO);

@@ -6,6 +6,7 @@ AugustEngine: \
   CMakeFiles/AugustEngine.dir/src/Utils.cpp.o \
   CMakeFiles/AugustEngine.dir/src/math/Vec3.cpp.o \
   CMakeFiles/AugustEngine.dir/src/math/Mat4.cpp.o \
+  CMakeFiles/AugustEngine.dir/src/Camera.cpp.o \
   /usr/lib64/libGL.so \
   /usr/lib64/libGLEW.so \
   /usr/lib64/libSDL2-2.0.so.0.3200.56 \
@@ -57,6 +58,8 @@ CMakeFiles/AugustEngine.dir/src/Utils.cpp.o:
 CMakeFiles/AugustEngine.dir/src/math/Vec3.cpp.o:
 
 CMakeFiles/AugustEngine.dir/src/math/Mat4.cpp.o:
+
+CMakeFiles/AugustEngine.dir/src/Camera.cpp.o:
 
 /usr/lib64/libGL.so:
 

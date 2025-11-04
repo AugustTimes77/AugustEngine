@@ -309,4 +309,9 @@ CMakeFiles/AugustEngine.dir/src/main.cpp.o: \
  /usr/include/c++/15/fstream /usr/include/c++/15/bits/codecvt.h \
  /usr/include/c++/15/x86_64-redhat-linux/bits/basic_file.h \
  /usr/include/c++/15/x86_64-redhat-linux/bits/c++io.h \
- /usr/include/c++/15/bits/fstream.tcc /usr/local/include/soil2/SOIL2.h
+ /usr/include/c++/15/bits/fstream.tcc /usr/local/include/soil2/SOIL2.h \
+ /home/henry/Documents/dev/AugustEngine/include/AugustEngine/Camera.h \
+ /home/henry/Documents/dev/AugustEngine/include/AugustEngine/math/Mat4.h \
+ /home/henry/Documents/dev/AugustEngine/include/AugustEngine/math/Vec3.h \
+ /home/henry/Documents/dev/AugustEngine/include/AugustEngine/math/Vec3.h \
+ /home/henry/Documents/dev/AugustEngine/include/AugustEngine/math/Vec3.h

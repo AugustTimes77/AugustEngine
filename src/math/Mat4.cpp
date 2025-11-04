@@ -98,7 +98,7 @@ namespace AugustEngine {
         return result;
     }
 
-    static Mat4 Mat::lookAt(const Vec3& eye, const Vec3& ceter, const Vec3& up){
+    Mat4 Mat4::lookAt(const Vec3& eye, const Vec3& center, const Vec3& up){
         Vec3 f = (center - eye).normalize();    // forward direction
         Vec3 s = f.cross(up).normalize();       // side (right) direction
         Vec3 u = s.cross(f);                    // up direction (re-orthogonalized)

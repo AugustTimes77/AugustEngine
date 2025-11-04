@@ -20,6 +20,10 @@ namespace Utils {
                                 const char *gp, const char *fp);
     
     bool checkGLError(const char* operation = "OpenGL operation");
+
+    inline float toRadians(float degrees) {
+        return degrees * (3.14159265358979323846f / 180.0f);
+    }
 }
 
 
